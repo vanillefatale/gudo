@@ -40,7 +40,7 @@ def clean_kiwoom_data(df):
     df = df.copy()
 
     # ✅ 실물 종목 필터링
-    keywords = ["ETN", "KOFR", "CD금리", "회사채", "채권", "통안", "레버리지", "인버스"]
+    keywords = ["ETN", "KOFR", "CD금리", "회사채", "채권", "통안", "레버리지", "인버스", "액티브", "선물", "AA"]
     df = df[~df["종목명"].str.contains('|'.join(keywords))].reset_index(drop=True)
 
     # ✅ 종목코드 포맷 통일
