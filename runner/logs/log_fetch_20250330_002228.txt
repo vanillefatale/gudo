@@ -1,0 +1,14 @@
+[2025-03-30  0:22:28.16] Fetch Start 
+Traceback (most recent call last):
+  File "C:\Python310_32bit\lib\runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "C:\Python310_32bit\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\dev\Desktop\dev\gudo\highlow\run.py", line 22, in <module>
+    df_h60 = get_sorted_df("high", "60")
+  File "C:\Users\dev\Desktop\dev\gudo\highlow\run.py", line 11, in get_sorted_df
+    df = fetch_high_low_list(high_or_low, period)
+  File "C:\Users\dev\Desktop\dev\gudo\highlow\kiwoom\kiwoom_fetcher.py", line 9, in fetch_high_low_list
+    print(f"\U0001f680 [{high_or_low}] 종목 수집 시작...", flush=True)
+UnicodeEncodeError: 'cp949' codec can't encode character '\U0001f680' in position 0: illegal multibyte sequence
+[2025-03-30  0:22:45.29] Fetch Done 
