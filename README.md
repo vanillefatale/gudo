@@ -1,5 +1,15 @@
-# Gudo HighLow Fetcher 📈
+# Gudo 프로젝트 🧠📈
+> HighLow 종목 수집기와 Macro 자동 리포트 시스템으로 구성된 투자 분석 자동화 툴
 
+```bash
+# gudo 폴더에서 실행
+python -m highlow.run
+python -m macro.run
+```
+
+<details>
+<summary><strong>📈Gudo HighLow Fetcher 📈</strong></summary>
+<br>
 키움증권 OpenAPI를 활용한 60일/250일 신고가/신저가 종목 수집기  
 자동 엑셀 저장 및 필터링 기능 내장
 
@@ -147,6 +157,114 @@ python -m highlow.run_alert
 • 전남 산불 확산, 관련 기업 반사이익
 👉 https://news.naver.com/...
 ```
+
+</details>
+
+---
+
+<details>
+<summary><strong>📊 Gudo Macro Reporter </strong></summary>
+<br>
+Finviz 선물지수 차트를 기반으로 주요 자산의 등락 요약을 자동 생성하고  
+ChatGPT Vision API를 통해 이유를 분석하여 텔레그램으로 자동 전송하는 매크로 리포터입니다.
+
+---
+
+## 📂 디렉토리 구조
+
+```
+gudo/
+├── macro/
+│   ├── futures/
+│   │   ├── macro_futures.py         # Finviz 캡처 및 GPT Vision 분석
+│   │   └── screenshots/             # 스크린샷 저장 폴더
+│   ├── telegram/
+│   │   └── telegram_notifier.py     # 텔레그램 메시지 전송
+│   ├── news/
+│   │   └── (추후 뉴스 요약 모듈 예정)
+│   ├── run.py                       # 메인 실행 파일 (python -m macro.run)
+│   └── __init__.py                  # 패키지 인식용
+└── README.md
+```
+
+---
+
+## 🛠 설치 가이드
+
+### 1️⃣ 필수 설치 패키지
+
+```bash
+pip install -r requirements.txt
+```
+
+`requirements.txt`에는 다음과 같은 패키지가 포함되어야 합니다:
+
+- openai  
+- python-dotenv  
+- selenium  
+- webdriver-manager  
+- yfinance  
+- requests  
+
+---
+
+### 2️⃣ .env 파일 구성 예시
+
+```env
+OPENAI_API_KEY=sk-xxxxxx
+TELEGRAM_BOT_TOKEN=123456:ABCDEF
+TELEGRAM_CHAT_ID=987654321
+```
+
+※ `.env` 파일은 루트 또는 `macro/` 폴더 안에 위치해야 합니다.
+
+---
+
+## ▶ 실행 방법
+
+```bash
+# gudo 폴더에서 실행
+python -m macro.run
+```
+
+---
+
+## 🔁 자동화 흐름
+
+1. Finviz 선물지수 페이지를 열고 사용자 인증 대기
+2. 화면 자동 캡처 후 이미지 저장
+3. GPT Vision API를 이용해 이미지 분석 및 요약 생성
+4. 주요 상승/하락 자산 및 원인 정리
+5. 텔레그램 메시지로 자동 전송
+
+---
+
+## 💬 메시지 예시
+
+```
+*MACRO(240406)*
+
+◎ 주요 지표  
+S&P500 -1.23%  
+Nasdaq -1.42%  
+WTI $76.23 (-2.18%)  
+
+◎ 선물 지표  
+VIX +23.6%, 시장 불확실성 확대  
+USD +0.88%, 안전 자산 수요 증가  
+...
+
+◎ 경제 지표 및 발표  
+(수동 입력)
+
+◎ 주요 이슈  
+(자동 요약 또는 수동 입력)
+
+◎ 종합 정리  
+(자동 생성 또는 수동 입력)
+```
+
+</details>
 
 ---
 
