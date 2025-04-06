@@ -13,5 +13,6 @@ Thumbs.db
 # Excel Output
 *_신고신저.xlsx
 highlow/.env
+macro/.env
 
 .env
